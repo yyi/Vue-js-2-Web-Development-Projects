@@ -47,62 +47,63 @@
 </template>
 
 <script>
-import { createNamespacedHelpers } from 'vuex'
+  import {createNamespacedHelpers} from 'vuex'
 
-// Vuex mappers
-// maps module
-const {
-  mapGetters: mapsGetters,
-  mapActions: mapsActions,
-} = createNamespacedHelpers('maps')
-// posts module
-const {
-  mapGetters: postsGetters,
-  mapActions: postsActions,
-} = createNamespacedHelpers('posts')
+  // Vuex mappers
+  // maps module
+  const {
+    mapGetters: mapsGetters,
+    mapActions: mapsActions,
+  } = createNamespacedHelpers('maps')
+  // posts module
+  const {
+    mapGetters: postsGetters,
+    mapActions: postsActions,
+  } = createNamespacedHelpers('posts')
 
-export default {
-  computed: {
-    ...mapsGetters([
-      'center',
-      'zoom',
-    ]),
-    ...postsGetters([
-      'draft',
-      'posts',
-      'currentPost',
-    ]),
+  export default {
+    computed: {
+      ...mapsGetters([
+        'center',
+        'zoom',
+      ]),
+      ...postsGetters([
+        'draft',
+        'posts',
+        'currentPost',
+      ]),
 
-    mapOptions () {
-      return {
-        fullscreenControl: false,
-      }
-    },
-  },
-
-  methods: {
-    ...mapsActions([
-      'setBounds',
-      'setCenter',
-      'setUserPosition',
-      'setZoom',
-    ]),
-
-    ...postsActions([
-      'selectPost',
-      'setDraftLocation',
-    ]),
-
-    onIdle () {
-      this.setBounds(this.$refs.map.getBounds())
+      mapOptions() {
+        return {
+          fullscreenControl: false,
+        }
+      },
     },
 
-    onMapClick (event) {
-      this.setDraftLocation({
-        position: event.latLng,
-        placeId: event.placeId,
-      })
+    methods: {
+      ...mapsActions([
+        'setBounds',
+        'setCenter',
+        'setUserPosition',
+        'setZoom',
+      ]),
+
+      ...postsActions([
+        'selectPost',
+        'setDraftLocation',
+      ]),
+
+      onIdle() {
+        this.setBounds(this.$refs.map.getBounds())
+      },
+
+      onMapClick(event) {
+        console.log(this)
+        this.setDraftLocation({
+          position: event.latLng,
+          placeId: event.placeId,
+        })
+      },
     },
-  },
-}
+  }
 </script>

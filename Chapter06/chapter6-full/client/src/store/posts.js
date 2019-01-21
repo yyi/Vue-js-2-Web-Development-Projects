@@ -94,7 +94,8 @@ export default {
       }
 
       // Request
-      const result = await $fetch('posts/new', {
+      console.log('调用vue实例插件提交后台')
+      const result = await this._vm.$fetch('posts/new', {
         method: 'POST',
         body: JSON.stringify(data),
       })
