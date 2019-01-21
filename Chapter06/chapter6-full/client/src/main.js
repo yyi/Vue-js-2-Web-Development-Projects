@@ -19,7 +19,7 @@ Vue.use(VueFetch, {
 
 Vue.use(VueGoogleMaps, {
   load: {
-    apiKey: 'AIzaSyBl_r42YN1g-pY3DVsy_0x3k15f0-oOJeo',
+    apiKey: 'AIzaSyAJUvF3EzOSRmoiirPAKy8diC8sUNQSah0',
     libraries: ['places'],
   },
 })
