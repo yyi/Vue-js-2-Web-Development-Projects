@@ -26,6 +26,8 @@ export default {
       state.userPosition = value
     },
     zoom (state, value) {
+      //获取vue实例信息
+      console.log(this._vm)
       state.zoom = value
     },
   },
